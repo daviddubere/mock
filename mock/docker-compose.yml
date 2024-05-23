@@ -1,0 +1,16 @@
+
+services:
+  json-server:
+    container_name: json-mock
+    build: ./node
+    volumes:
+      - ./db.json:/data/db.json
+    ports:
+      - "8888:80"
+    command: -w /data/db.json
+    networks:
+      - mock_net
+networks:
+  mock_net:
+    name: json_server_net
+    external: true
